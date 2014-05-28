@@ -20,4 +20,4 @@ endfunction
 
 nnoremap <silent> <Plug>SortMotion :<C-U>set opfunc=<SID>sort_motion<CR>g@
 
-map <leader>so <Plug>SortMotion
+map gs <Plug>SortMotion
