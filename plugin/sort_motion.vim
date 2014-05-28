@@ -3,10 +3,10 @@
 " Version:      0.1
 " Source: http://github.com/christoomey/vim-sort-motion
 
-" if exists("g:loaded_sort_motion") || &cp || v:version < 700
-"   finish
-" endif
-" let g:loaded_sort_motion = 1
+if exists("g:loaded_sort_motion") || &cp || v:version < 700
+  finish
+endif
+let g:loaded_sort_motion = 1
 
 function! s:sort_motion(type,...) abort
   if a:0
