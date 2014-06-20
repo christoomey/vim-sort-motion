@@ -14,6 +14,10 @@ function! s:sort_motion(type,...) abort
   else " not in visual
     if a:type == 'line'
       '[,']sort
+    elseif a:type == 'char'
+      silent exe "normal! `[v`]y"
+      let sorted = join(sort(split(@@, ', ')), ', ')
+      silent exe "normal! v`]c" . sorted
     endif
   endif
 endfunction
