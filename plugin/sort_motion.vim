@@ -8,12 +8,16 @@ if exists("g:loaded_sort_motion") || &cp || v:version < 700
 endif
 let g:loaded_sort_motion = 1
 
+if !exists("g:sort_motion_flags")
+  let g:sort_motion_flags = ""
+endif
+
 function! s:sort_motion(type,...) abort
   if a:0
     echo 'in a:0 truthy block'
   else " not in visual
     if a:type == 'line'
-      '[,']sort
+      execute "'[,']sort " . g:sort_motion_flags
     elseif a:type == 'char'
       silent exe "normal! `[v`]y"
       let sorted = join(sort(split(@@, ', ')), ', ')

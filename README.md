@@ -47,3 +47,15 @@ Examples:
   baz, foo'`)
 
 [text-obj-indent plugin]: https://github.com/kana/vim-textobj-indent
+
+Configuration
+-------------
+
+If you'd like to pass any options to `sort`
+you can set `g:sort_motion_flags`. For example you could use:
+
+```vim
+let g:sort_motion_flags = "ui"
+```
+
+To make all sorts case insensitive and remove duplicates.
