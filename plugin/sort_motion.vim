@@ -24,8 +24,16 @@ function! s:sort_motion(mode) abort
   endif
 endfunction
 
+function! s:sort_lines()
+  let beginning = line('.')
+  let end = v:count + beginning - 1
+  execute beginning . ',' . end . 'sort ' . g:sort_motion_flags
+endfunction
+
 xnoremap <silent> <Plug>SortMotionVisual :<C-U>call <SID>sort_motion(visualmode())<CR>
 nnoremap <silent> <Plug>SortMotion :<C-U>set opfunc=<SID>sort_motion<CR>g@
+nnoremap <silent> <Plug>SortLines :<C-U>call <SID>sort_lines()<CR>
 
 map gs <Plug>SortMotion
+map gss <Plug>SortLines
 vmap gs <Plug>SortMotionVisual
