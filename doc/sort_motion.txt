@@ -1,0 +1,20 @@
+*sort_motion.txt*  Sort using text objects and motions.
+
+==============================================================================
+Descriptions and default values:~
+
+                                                              *'g:sort_motion'*
+Mapping for text object sorting: >
+    let g:sort_motion = 'gs'
+<
+
+                                                        *'g:sort_motion_lines'*
+Mapping for linewise sorting: >
+    let g:sort_motion_lines = 'gss'
+<
+
+                                                       *'g:sort_motion_visual'*
+Mapping for sorting in |Visual| mode: >
+    let g:sort_motion_visual = 'gs'
+<
+==============================================================================
