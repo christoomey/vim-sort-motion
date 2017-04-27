@@ -26,7 +26,7 @@ endfunction
 
 function! s:sort_lines()
   let beginning = line('.')
-  let end = (v:count ? v:count : 1) + beginning - 1
+  let end = v:count1 + beginning - 1
   execute beginning . ',' . end . 'sort ' . g:sort_motion_flags
 endfunction
 
