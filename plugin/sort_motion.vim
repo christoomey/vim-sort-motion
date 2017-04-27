@@ -26,7 +26,7 @@ endfunction
 
 function! s:sort_lines()
   let beginning = line('.')
-  let end = v:count + beginning - 1
+  let end = (v:count ? v:count : 1) + beginning - 1
   execute beginning . ',' . end . 'sort ' . g:sort_motion_flags
 endfunction
 
@@ -46,6 +46,6 @@ if !exists('g:sort_motion_visual')
   let g:sort_motion_visual = 'gs'
 endif
 
-execute 'map '  . g:sort_motion        . ' <Plug>SortMotion'
-execute 'map '  . g:sort_motion_lines  . ' <Plug>SortLines'
+execute 'nmap ' . g:sort_motion        . ' <Plug>SortMotion'
+execute 'nmap ' . g:sort_motion_lines  . ' <Plug>SortLines'
 execute 'vmap ' . g:sort_motion_visual . ' <Plug>SortMotionVisual'
