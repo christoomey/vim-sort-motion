@@ -17,8 +17,29 @@ function! s:sort_motion(mode) abort
     execute "'[,']sort " . g:sort_motion_flags
   elseif a:mode == 'char'
     execute "normal! `[v`]y"
-    let sorted = join(sort(split(@@, ', ')), ', ')
-    execute "normal! v`]c" . sorted
+    let startpos = match(@@, '\v\i')
+    let parts = split(@@, '\v\i+')
+    if startpos > 0
+      let prefix = parts[0]
+      let delimiter = parts[1]
+      let suffix = parts[-1]
+    else
+      let prefix = ''
+      let delimiter = parts[0]
+      let suffix = ''
+    endif
+    if prefix == delimiter
+      let prefix = ''
+    endif
+    if suffix == delimiter
+      let suffix = ''
+    endif
+    let sortstart = strlen(prefix)
+    let sortend = strlen(@@) - sortstart - strlen(suffix)
+    let sortables = strcharpart(@@, sortstart, sortend)
+    let sorted = join(sort(split(sortables, '\V' . escape(delimiter, '\'))), delimiter)
+    execute "normal! v`]c" . prefix . sorted . suffix
+    execute "normal! `["
   elseif a:mode == 'V' || a:mode == ''
     execute "'<,'>sort " . g:sort_motion_flags
   endif
