@@ -36,7 +36,7 @@ function! s:sort_motion(mode) abort
     endif
     let sortstart = strlen(prefix)
     let sortend = strlen(@@) - sortstart - strlen(suffix)
-    let sortables = strcharpart(@@, sortstart, sortend)
+    let sortables = strpart(@@, sortstart, sortend)
     let sorted = join(sort(split(sortables, '\V' . escape(delimiter, '\'))), delimiter)
     execute "normal! v`]c" . prefix . sorted . suffix
     execute "normal! `["
