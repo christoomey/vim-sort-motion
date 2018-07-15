@@ -12,6 +12,10 @@ if !exists("g:sort_motion_flags")
   let g:sort_motion_flags = ""
 endif
 
+if !exists('g:sort_motion_visual_block_command')
+  let g:sort_motion_visual_block_command = 'sort'
+endif
+
 function! s:sort_motion(mode) abort
   if a:mode == 'line'
     execute "'[,']sort " . g:sort_motion_flags
@@ -40,8 +44,10 @@ function! s:sort_motion(mode) abort
     let sorted = join(sort(split(sortables, '\V' . escape(delimiter, '\'))), delimiter)
     execute "normal! v`]c" . prefix . sorted . suffix
     execute "normal! `["
-  elseif a:mode == 'V' || a:mode == ''
+  elseif a:mode == 'V'
     execute "'<,'>sort " . g:sort_motion_flags
+  elseif a:mode ==# ''
+    execute "'<,'>".g:sort_motion_visual_block_command.' '.g:sort_motion_flags
   endif
 endfunction
 

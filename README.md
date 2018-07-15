@@ -10,7 +10,10 @@ in Vim, it becomes a viable option.
 
 - Linewise: sort a sequence of lines (require statements, gem lists, etc)
 - Character: sort a comma separated list (argument lists, attribute lists, etc)
-- Visual: provided for continuity, similar to linewise
+- Visual (linewise or normal): provided for continuity, similar to linewise
+- Block Visual: By default behaves the same as the other visual modes.
+  Optionally, you can provide a specific sort command which you might use to
+  sort by a column (example: `Vissort`)
 
 Installation
 ------------
@@ -55,11 +58,15 @@ Examples:
 ### Visual
 
 For continuity, `sort-motion` also defines a visual mode mapping for `gs`.
-This behaves as a linewise sort over the lines defined by the visual or block
-selection
+This behaves as a linewise sort over the lines defined by the visual selection.
+
+You can also (optionally) specify a blockwise command to use for block
+selections (example: `Vissort`).
 
 Configuration
 -------------
+
+### sort_motion_flags
 
 If you'd like to pass any options to `sort`
 you can set `g:sort_motion_flags`. For example you could use:
@@ -72,3 +79,17 @@ To make all sorts case insensitive and remove duplicates.
 
 *Note*: this only applies to linewise sorting (including visual), but does
 not apply to the character based sorting of comma separated lists.
+
+### sort_motion_visual_block_command
+
+If you'd like to specify a specific command to use for blockwise selections you
+can set it here. This is useful if for example you want to use `Vissort` so that
+you can sort by a column.
+
+```vim
+let g:sort_motion_visual_block_command = "Vissort"
+```
+
+By default the command used is `sort`.
+
+NOTE: To use `Vissort` you will need to install this plugin.
