@@ -72,7 +72,7 @@ If you'd like to pass any options to `sort`
 you can set `g:sort_motion_flags`. For example you could use:
 
 ```vim
-let g:sort_motion_flags = "ui"
+let g:sort_motion_flags = 'ui'
 ```
 
 To make all sorts case insensitive and remove duplicates.
@@ -87,7 +87,7 @@ can set it here. This is useful if for example you want to use `Vissort` so that
 you can sort by a column.
 
 ```vim
-let g:sort_motion_visual_block_command = "Vissort"
+let g:sort_motion_visual_block_command = 'Vissort'
 ```
 
 By default the command used is `sort`.
